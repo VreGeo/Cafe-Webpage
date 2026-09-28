@@ -1,0 +1,118 @@
+#header {
+    background-color: white;
+    position: sticky;
+}
+
+header {
+    position: relative;
+}
+
+#header header {
+    display: flex;
+    flex-direction: row;
+    padding: 50px clamp(50px, 4vw, 100px);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+.logo-container img {
+    width: clamp( 50px, 80px, 100px);
+    height: clamp( 50px, 80px, 100px);
+    border-radius: 276px;
+    border: solid 3px var(--border-2-1);
+}
+.logo-container p {
+    font-size: clamp(24px, 26px, 28px);
+    font-weight: var(--light);
+    color: var(--deep-brown);
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+}
+
+.header-container nav ul{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.mobile-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-container input {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 24px;
+    border: 1px solid black;
+    outline: none;
+    transition: max-width 0.4s ease-in-out, padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.search-container img {
+    width: 24px;
+    height: auto;
+}
+
+.mobile-burger-menu {
+    display: none;
+}
+
+.search-container:hover input {
+    max-width: 274px;
+    opacity: 1;
+    padding: 8px 20px;
+}
+
+
+.mobile-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0%;
+}
+
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: end;
+    margin-top: 0px;
+    top: 100%;
+    right: 0%;
+    background-color: var(--light-white);
+    height: 70vh;
+    width: clamp(215px, 7vw, 320px);
+    padding: 40px 80px 40px 0px;
+}
+
+@media screen and (max-width: 1339px) {
+     .mobile-burger-menu {
+        display: flex;
+     }   
+
+     .header-container nav {
+        display: none;
+     }
+}

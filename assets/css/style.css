@@ -5,7 +5,7 @@
     --bg: #ECEAE2;
     --forest: #37480E;
     --cocoa: #764700;
-    --light: #F8F8F8;
+    --light-white: #F8F8F8;
     --charcoal: #484848;
     --shadow: #171717;
     /* Low Opacity */
@@ -52,6 +52,18 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
     background-color: var(--bg);
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
 }
