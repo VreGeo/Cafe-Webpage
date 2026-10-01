@@ -3,7 +3,6 @@ function loadComponent(selector, file, callback) {
     fetch(file)
         .then(res => res.text())
         .then(html => {
-            // Strip any scripts injected by dev servers (e.g. Live Server WebSocket)
             const clean = html.replace(/<script[\s\S]*?<\/script>/gi, '');
             document.querySelector(selector).innerHTML = clean;
             if (callback) callback();
