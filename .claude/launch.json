@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/ADMINI~1/AppData/Local/Temp/claude/C--Users-Administrator-git-projects-Cafe-Webpage/4d2440a0-d45c-47a3-a136-cab0b56081fc/scratchpad/serve.js",
+        "C:/Users/Administrator/git-projects/Cafe-Webpage"
+      ],
+      "port": 5173
+    }
+  ]
+}
