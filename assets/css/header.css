@@ -1,6 +1,8 @@
 #header {
     background-color: white;
     position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header {
@@ -70,16 +72,19 @@ header {
     transition: max-width 0.4s ease-in-out, padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 
-.search-container img {
-    width: 24px;
+.search-icon {
+    width: 30px;
     height: auto;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .mobile-burger-menu {
     display: none;
+    cursor: pointer;
 }
 
-.search-container:hover input {
+.search-container.is-open input {
     max-width: 274px;
     opacity: 1;
     padding: 8px 20px;
@@ -91,6 +96,33 @@ header {
     position: absolute;
     top: 100%;
     right: 0%;
+    overflow: hidden;
+}
+
+.burger-icon {
+    cursor: pointer;
+    display: block;
+    overflow: visible;
+}
+
+.burger-line {
+    transform-origin: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity   0.25s ease;
+}
+
+.mobile-burger-menu:hover .burger-line--top,
+.mobile-burger-menu.is-open .burger-line--top {
+    transform: rotate(45deg) translate(0px, 12px);
+}
+.mobile-burger-menu:hover .burger-line--middle,
+.mobile-burger-menu.is-open .burger-line--middle {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.mobile-burger-menu:hover .burger-line--bottom,
+.mobile-burger-menu.is-open .burger-line--bottom {
+    transform: rotate(-45deg) translate(2px, -14px);
 }
 
 .mobile-menu ul {
@@ -98,13 +130,47 @@ header {
     flex-direction: column;
     gap: 60px;
     align-items: end;
-    margin-top: 0px;
+    margin: 0;
     top: 100%;
     right: 0%;
     background-color: var(--light-white);
     height: 70vh;
     width: clamp(215px, 7vw, 320px);
     padding: 40px 80px 40px 0px;
+
+    /* hidden state */
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity   0.35s ease;
+}
+
+.mobile-burger-menu:hover .mobile-menu ul,
+.mobile-burger-menu.is-open .mobile-menu ul {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.header-container ul li a,
+.mobile-menu ul li a {
+    position: relative;
+}
+.header-container ul li a::after,
+.mobile-menu ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+}
+.header-container ul li:hover a::after,
+.mobile-menu ul li:hover a::after {
+    width: 100%;
 }
 
 @media screen and (max-width: 1339px) {
