@@ -12,7 +12,7 @@ header {
 #header header {
     display: flex;
     flex-direction: row;
-    padding: 50px clamp(50px, 4vw, 100px);
+    padding: 20px clamp(50px, 4vw, 100px);
     justify-content: space-between;
     align-items: center;
     position: relative;

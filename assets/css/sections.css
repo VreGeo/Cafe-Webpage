@@ -1,0 +1,92 @@
+/* Hero Section */
+.hero {
+    width: 100%;
+    height: 100%;
+    min-height: 89vh;
+    position: relative;
+    z-index: 1;
+    display: cover;
+    background-image: url("../../assets/images/hero.svg");
+    background-size: cover; 
+    background-position: center;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.hero-title {
+    position: absolute;
+    top: 25vh;
+    left: 50vw;
+    padding-bottom: 25px;
+    transform: translate(-50%, -50%);
+    font-family: var(--fancy);
+    font-size: clamp(62px, 8vw, 120px);
+    color: white;
+    text-align: center;
+}
+
+.hero-subtitle {
+    position: absolute;
+    top: 45vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    font-size: clamp(32px, 4vw, 50px);
+    color: white;
+    text-align: center;
+    font-weight: var(--regular);
+    white-space: nowrap;
+    padding: 10px 0;
+    background: linear-gradient(to right, rgba(61, 43, 31, 0) 0%, #3D2B1F 20%, #3D2B1F 80%, rgba(61, 43, 31, 0) 100%);
+}
+
+/* Wavy layers at the bottom of the hero */
+.hero-waves {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1920 / 231;
+    left: 0;
+    bottom: -1px;
+    overflow: hidden;
+    display: block;
+}
+
+.hero-waves path {
+    vector-effect: non-scaling-stroke;
+}
+
+.block-box-1 {
+    fill: rgba(236, 234, 226, 0.4);
+    stroke: rgba(0, 0, 0, 0.3);
+    stroke-width: 2px;
+}
+
+.block-box-2 {
+    fill: var(--bg);
+    stroke: rgba(118, 71, 0, 0.7);
+    stroke-width: 2px;
+}
+
+.block-box-4 {
+    fill: var(--bg);
+}
+
+.block-box-3 {
+    fill: rgba(236, 234, 226, 0.4);
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 2px;
+}
+
+@media screen and (max-width:1500px) {
+    .hero-subtitle {
+        white-space: wrap;
+    }
+}

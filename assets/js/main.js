@@ -86,4 +86,6 @@ loadComponent('#header', 'components/header.html', () => {
     });
 });
 
+
 loadComponent('#footer', 'components/footer.html');
+loadComponent('#hero', 'components/hero.html');
