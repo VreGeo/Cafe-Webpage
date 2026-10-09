@@ -12,9 +12,35 @@ header {
 #header header {
     display: flex;
     flex-direction: row;
-    padding: 50px clamp(50px, 4vw, 100px);
+    padding: 20px clamp(50px, 4vw, 100px);
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 100;
+    background-color: white;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(61, 43, 31, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 90;
+}
+
+.menu-overlay.is-open,
+#header:has(.mobile-burger-menu.is-open) .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .logo-container {
@@ -99,12 +125,28 @@ header {
     overflow: hidden;
     width: clamp(215px, 25vw, 320px);
     height: calc(100dvh - 100%);
+    pointer-events: none;
+    visibility: hidden;
+    transition: visibility 0.4s ease;
+    z-index: 100;
+}
+
+.mobile-burger-menu.is-open .mobile-menu {
+    pointer-events: auto;
+    visibility: visible;
 }
 
 .burger-icon {
     cursor: pointer;
     display: block;
     overflow: visible;
+    position: relative;
+    z-index: 101;
+    transition: opacity 0.2s ease;
+}
+
+.burger-icon:hover {
+    opacity: 0.75;
 }
 
 .burger-line {
@@ -113,16 +155,13 @@ header {
                 opacity   0.25s ease;
 }
 
-.mobile-burger-menu:hover .burger-line--top,
 .mobile-burger-menu.is-open .burger-line--top {
     transform: rotate(45deg) translate(0px, 12px);
 }
-.mobile-burger-menu:hover .burger-line--middle,
 .mobile-burger-menu.is-open .burger-line--middle {
     opacity: 0;
     transform: scaleX(0);
 }
-.mobile-burger-menu:hover .burger-line--bottom,
 .mobile-burger-menu.is-open .burger-line--bottom {
     transform: rotate(-45deg) translate(2px, -14px);
 }
@@ -147,7 +186,6 @@ header {
                 opacity   0.35s ease;
 }
 
-.mobile-burger-menu:hover .mobile-menu ul,
 .mobile-burger-menu.is-open .mobile-menu ul {
     opacity: 1;
     transform: translateX(0);
@@ -182,4 +220,10 @@ header {
      .header-container nav {
         display: none;
      }
+}
+
+@media screen and (min-width: 1340px) {
+    .menu-overlay {
+        display: none !important;
+    }
 }

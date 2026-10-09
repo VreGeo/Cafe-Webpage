@@ -12,14 +12,48 @@ function loadComponent(selector, file, callback) {
 loadComponent('#header', 'components/header.html', () => {
     // Burger menu toggle
     const burger_menu = document.querySelector('.mobile-burger-menu');
-    burger_menu.addEventListener('click', () => {
-        burger_menu.classList.toggle('is-open');
-    });
-    document.addEventListener('click', (e) => {
-        if (!burger_menu.contains(e.target)) {
-            burger_menu.classList.remove('is-open');
+    const burger_icon = document.querySelector('.burger-icon');
+    const mobile_menu = document.querySelector('.mobile-menu');
+    const menu_overlay = document.querySelector('.menu-overlay');
+
+    if (burger_menu && burger_icon) {
+        burger_icon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = burger_menu.classList.toggle('is-open');
+            if (menu_overlay) menu_overlay.classList.toggle('is-open', isOpen);
+        });
+
+        if (menu_overlay) {
+            menu_overlay.addEventListener('click', () => {
+                burger_menu.classList.remove('is-open');
+                menu_overlay.classList.remove('is-open');
+            });
         }
-    });
+
+        // Prevent clicks inside the menu drawer from accidentally closing it (unless clicking a link)
+        if (mobile_menu) {
+            mobile_menu.addEventListener('click', (e) => {
+                if (!e.target.closest('a')) {
+                    e.stopPropagation();
+                }
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!burger_menu.contains(e.target) && !e.target.closest('.menu-overlay')) {
+                burger_menu.classList.remove('is-open');
+                if (menu_overlay) menu_overlay.classList.remove('is-open');
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && burger_menu.classList.contains('is-open')) {
+                burger_menu.classList.remove('is-open');
+                if (menu_overlay) menu_overlay.classList.remove('is-open');
+            }
+        });
+    }
 
     // Search bar toggle
     const searchContainer = document.querySelector('.search-container');
@@ -52,4 +86,6 @@ loadComponent('#header', 'components/header.html', () => {
     });
 });
 
+
 loadComponent('#footer', 'components/footer.html');
+loadComponent('#hero', 'components/hero.html');
