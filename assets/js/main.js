@@ -86,6 +86,6 @@ loadComponent('#header', 'components/header.html', () => {
     });
 });
 
-
+loadComponent('#hero', 'sections/hero.html');
+loadComponent('#how-it-started', 'sections/how-it-started.html');
 loadComponent('#footer', 'components/footer.html');
-loadComponent('#hero', 'components/hero.html');
